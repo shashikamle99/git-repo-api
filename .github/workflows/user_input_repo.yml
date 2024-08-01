@@ -1,0 +1,35 @@
+name: Create Organization Repository
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        description: 'Name of the repository to create'
+        required: true
+        default: 'new-repo'
+      repo_description:
+        description: 'Description of the repository'
+        required: false
+        default: 'A new repository created via GitHub Actions'
+      private:
+        description: 'Should the repository be private?'
+        required: false
+        default: 'true'
+
+jobs:
+  create-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -d '{"name": "${{ github.event.inputs.repo_name }}", "description": "${{ github.event.inputs.repo_description }}", "private": "${{ github.event.inputs.private }}" }' \
+            https://api.github.com/orgs/shashikamle99/repos
