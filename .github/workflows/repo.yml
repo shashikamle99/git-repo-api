@@ -7,8 +7,8 @@ on:
         required: true
         type: string
 
-# env:
-#   GH_REPO: ${{ github.inputs.repo_name }}
+env:
+  GH_REPO: ${{ github.event.inputs.repo_name }}
 
   
 jobs:
@@ -18,6 +18,5 @@ jobs:
       - name: Create repo
         run: |
           echo "GH_REPO: $GH_REPO"
-        env:
-          GH_REPO: ${{ github.event.inputs.repo_name }}
-          
+        # env:
+        #   GH_REPO: ${{ github.event.inputs.repo_name }}
