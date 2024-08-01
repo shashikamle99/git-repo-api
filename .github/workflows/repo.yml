@@ -6,10 +6,15 @@ on:
         description: 'Name of the repository to be created'
         required: true
         default: ''
+
+env:
+  GH_REPO: ${{ github.event.inputs.repo_name }}
+  
 jobs:
   create-repo:
     runs-on: ubuntu-latest
     steps:
-      - name: ${{ github.event.inputs.repo_name }}
-        run: ${{ github.event.inputs.repo_name }}
-        # # uses: actions/checkout@v3
+      - name: Create repo
+        run: |
+          echo "GH_REPO: $GH_REPO"
+      
