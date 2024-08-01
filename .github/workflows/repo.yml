@@ -10,6 +10,6 @@ jobs:
   create-repo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        run: echo "${{ github.event.inputs.repo_name }}"
-        # uses: actions/checkout@v3
+      - name: ${{ github.event.inputs.repo_name }}
+        # run: echo ""
+        # # uses: actions/checkout@v3
