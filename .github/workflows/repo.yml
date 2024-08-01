@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ${{ github.event.inputs.repo_name }}
-        # run: echo ""
+        run: ${{ github.event.inputs.repo_name }}
         # # uses: actions/checkout@v3
