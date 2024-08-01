@@ -2,10 +2,10 @@ name: Create Repo
 on: 
   workflow_dispatch:
     inputs:
-      repo-name: 
-        description: 'Name of the repository to be created'
+      repo_name:
+        description: 'Name of the repository to create'
         required: true
-        default: ''
+        type: string
 
 env:
   GH_REPO: ${{ github.inputs.repo_name }}
