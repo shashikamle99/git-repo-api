@@ -7,15 +7,13 @@ on:
         required: true
         type: string
 
-env:
-  GH_REPO: ${{ github.inputs.repo_name }}
-  # GH_REPO: "repo-name"
+# env:
+#   GH_REPO: ${{ github.inputs.repo_name }}
+#   # GH_REPO: "repo-name"
   
 jobs:
   create-repo:
     runs-on: ubuntu-latest
     steps:
       - name: Create repo
-        run: |
-          echo "GH_REPO: $GH_REPO"
-      
+        run: echo "${{ github.event.inputs.repo_name }}"
